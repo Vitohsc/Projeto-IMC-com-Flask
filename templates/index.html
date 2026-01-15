@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+
+        <form method="post">
+            <input type="number" step="0.01" name="peso" placeholder="Peso (kg)" required>
+            <input type="number" step="0.01" name="altura" placeholder="Altura (m)" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if imc %}
+        <div class="resultado">
+            <p><strong>IMC:</strong> {{ "%.2f"|format(imc) }}</p>
+            <p><strong>Classificação:</strong> {{ classificacao }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
